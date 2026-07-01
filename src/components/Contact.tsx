@@ -5,11 +5,14 @@ import { useState, type FormEvent } from "react";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    const url = `https://wa.me/966598334586?text=${encodeURIComponent(`Hi, I'm ${name} (${email}).\n\n${message}`)}`;
+    window.location.href = url;
   };
 
   return (
@@ -77,6 +80,8 @@ export default function Contact() {
                   type="text"
                   id="name"
                   required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl bg-navy-800/50 border border-neon-cyan/10 text-white placeholder-gray-600 focus:border-neon-cyan/40 focus:outline-none focus:ring-1 focus:ring-neon-cyan/20 transition-all text-sm sm:text-base"
                   placeholder="Your name"
                 />
@@ -89,6 +94,8 @@ export default function Contact() {
                   type="email"
                   id="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl bg-navy-800/50 border border-neon-cyan/10 text-white placeholder-gray-600 focus:border-neon-cyan/40 focus:outline-none focus:ring-1 focus:ring-neon-cyan/20 transition-all text-sm sm:text-base"
                   placeholder="you@example.com"
                 />
@@ -101,6 +108,8 @@ export default function Contact() {
                   id="message"
                   required
                   rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl bg-navy-800/50 border border-neon-cyan/10 text-white placeholder-gray-600 focus:border-neon-cyan/40 focus:outline-none focus:ring-1 focus:ring-neon-cyan/20 transition-all resize-none text-sm sm:text-base"
                   placeholder="Tell me about your project..."
                 />
@@ -126,7 +135,7 @@ export default function Contact() {
               <h3 className="text-white font-semibold mb-4 text-[15px]">Quick Contact</h3>
               <div className="space-y-4">
                 <a
-                  href="mailto:hello@omarify.com"
+                  href="mailto:uf031186@gmail.com"
                   className="flex items-center gap-4 text-gray-400 hover:text-neon-cyan transition-colors group"
                 >
                   <div className="p-2.5 rounded-lg bg-neon-cyan/10 text-neon-cyan group-hover:bg-neon-cyan/20 transition-colors">
@@ -134,10 +143,10 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <span className="text-sm">hello@omarify.com</span>
+                  <span className="text-sm">uf031186@gmail.com</span>
                 </a>
                 <a
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/966598334586"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 text-gray-400 hover:text-neon-cyan transition-colors group"
